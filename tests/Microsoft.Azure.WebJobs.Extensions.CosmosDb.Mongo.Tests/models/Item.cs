@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.models
+namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.Models
 {
     public class Item
     {

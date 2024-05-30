@@ -7,12 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Moq;
-using Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.Models;
 
 namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests
 {
