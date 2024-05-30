@@ -24,19 +24,19 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor
 
             return Task.WhenAll(
                 Partitioner.Create(source)
-                            .GetPartitions(maxParallelTaskCount ?? 100)
-                            .Select(partition => Task.Run(
-                                async () =>
+                    .GetPartitions(maxParallelTaskCount ?? 100)
+                    .Select(partition => Task.Run(
+                        async () =>
+                        {
+                            using (partition)
+                            {
+                                while (partition.MoveNext())
                                 {
-                                    using (partition)
-                                    {
-                                        while (partition.MoveNext())
-                                        {
-                                            cancellationToken.ThrowIfCancellationRequested();
-                                            await worker(partition.Current).ConfigureAwait(false);
-                                        }
-                                    }
-                                })));
+                                    cancellationToken.ThrowIfCancellationRequested();
+                                    await worker(partition.Current).ConfigureAwait(false);
+                                }
+                            }
+                        })));
         }
     }
 }

@@ -8,11 +8,17 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor
     public interface ILease<TContinuation>
     {
         public DateTime Timestamp();
+
         public string Owner();
+
         public string Id();
+
         public TContinuation Continuation();
+
         void SetContinuation(TContinuation newContinuation);
+
         void SetOwner(string owner);
+
         void SetTimestamp(DateTime dateTime);
     }
 }
