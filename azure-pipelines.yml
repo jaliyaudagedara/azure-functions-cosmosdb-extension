@@ -32,7 +32,7 @@ steps:
     inputs:
       command: 'build'
       arguments: '--configuration Release -p:IsLocalBuild=False'
-      projects: Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.csproj
+      projects: src/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.csproj
 
   - task: DotNetCoreCLI@2
     displayName: Build test projects
@@ -40,13 +40,13 @@ steps:
       command: 'build'
       arguments: '--configuration Release -p:IsLocalBuild=False'
       projects: |
-        Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.csproj
+        tests/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.csproj
 
   - task: DotNetCoreCLI@2
     displayName: Run unit tests
     inputs:
       command: test
-      projects: Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests
+      projects: tests/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests
       arguments: --filter TestCategory!~EmulatorRequired
     env:
       CosmosDB: placeholder
@@ -79,7 +79,7 @@ steps:
     inputs:
       command: pack
       packDirectory: '$(Build.ArtifactStagingDirectory)'
-      searchPatternPack: Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.csproj
+      searchPatternPack: src/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo/Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.csproj
       configurationToPack: Release
       includesymbols: true
 
@@ -88,7 +88,7 @@ steps:
     inputs:
       command: pack
       packDirectory: '$(Build.ArtifactStagingDirectory)'
-      searchPatternPack: Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor/Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.csproj
+      searchPatternPack: src/Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor/Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.csproj
       configurationToPack: Release
       includesymbols: true
 

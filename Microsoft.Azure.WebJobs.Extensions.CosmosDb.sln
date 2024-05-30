@@ -3,21 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor", "Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor\Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.csproj", "{F3B7CB42-CE32-45B7-80CF-B5E5E9387547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor", "src\Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor\Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.csproj", "{F3B7CB42-CE32-45B7-80CF-B5E5E9387547}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Tests", "Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Tests\Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Tests.csproj", "{3172F04B-840A-41E1-B586-AEC5C74603F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Tests", "tests\Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Tests\Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Tests.csproj", "{3172F04B-840A-41E1-B586-AEC5C74603F0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F3B7CB42-CE32-45B7-80CF-B5E5E9387547} = {F3B7CB42-CE32-45B7-80CF-B5E5E9387547}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo", "Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo\Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.csproj", "{0BFBE461-7EC5-4749-9AFA-EF93F04E38C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo", "src\Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo\Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.csproj", "{0BFBE461-7EC5-4749-9AFA-EF93F04E38C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests", "Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests\Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.csproj", "{DA6E232B-F1DA-4252-BBA0-F88A4208FA4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests", "tests\Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests\Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo.Tests.csproj", "{DA6E232B-F1DA-4252-BBA0-F88A4208FA4B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csproj", "{7421755B-5FFC-48D5-805A-D4385B195088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "samples\Sample\Sample.csproj", "{7421755B-5FFC-48D5-805A-D4385B195088}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0BFBE461-7EC5-4749-9AFA-EF93F04E38C1} = {0BFBE461-7EC5-4749-9AFA-EF93F04E38C1}
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF3AD6A2-842A-4543-940F-C16984A0CD7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8A156A3A-9827-4880-B125-859EFD0A6560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{F0380A6E-87EB-4368-8B14-B94AC7456E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +54,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3B7CB42-CE32-45B7-80CF-B5E5E9387547} = {AF3AD6A2-842A-4543-940F-C16984A0CD7B}
+		{3172F04B-840A-41E1-B586-AEC5C74603F0} = {8A156A3A-9827-4880-B125-859EFD0A6560}
+		{0BFBE461-7EC5-4749-9AFA-EF93F04E38C1} = {AF3AD6A2-842A-4543-940F-C16984A0CD7B}
+		{DA6E232B-F1DA-4252-BBA0-F88A4208FA4B} = {8A156A3A-9827-4880-B125-859EFD0A6560}
+		{7421755B-5FFC-48D5-805A-D4385B195088} = {F0380A6E-87EB-4368-8B14-B94AC7456E97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A67F9C4-104D-4152-9E7D-D8EC27A65BAB}

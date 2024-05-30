@@ -3,18 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-	<AzureFunctionsVersion>v4</AzureFunctionsVersion>
-	<Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
-	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<PackageProjectUrl>https://github.com/Azure/azure-functions-cosmosdb-extension</PackageProjectUrl>
-	<Authors>Microsoft</Authors>
-	<Version>1.0.2</Version>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Azure/azure-functions-cosmosdb-extension</PackageProjectUrl>
+    <Authors>Microsoft</Authors>
+    <Version>1.0.2</Version>
 
-	<!-- Add strong name signing properties -->
-	<SignAssembly>True</SignAssembly>
-	<PublicSign>true</PublicSign>
+    <!-- Add strong name signing properties -->
+    <SignAssembly>True</SignAssembly>
+    <PublicSign>true</PublicSign>
     <DelaySign>False</DelaySign>
-	<AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
