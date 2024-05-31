@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Sample.Isolated": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7259 --verbose ",
+      "launchBrowser": false
+    }
+  }
+}

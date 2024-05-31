@@ -25,9 +25,10 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Mongo
         private PipelineDefinition<ChangeStreamDocument<BsonDocument>, BsonDocument> WatchPipeline()
         {
             return new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()
-                .Match(new BsonDocument(new Dictionary<string, BsonDocument>(){
-                            {"operationType", new BsonDocument("$in", new BsonArray(new List<string>(){"insert", "update", "replace" }))}
-                        }))
+                .Match(new BsonDocument(new Dictionary<string, BsonDocument>()
+                {
+                    { "operationType", new BsonDocument("$in", new BsonArray(new List<string>(){ "insert", "update", "replace" }))}
+                }))
                 .Project(new BsonDocument(new Dictionary<string, bool>()
                 {
                     { "_id", true },
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Mongo
         public async Task<BsonDocument?> ProcessAsync(MongoLease lease, CancellationToken cancellationToken, Action<TimeSpan> delay, Action<BsonDocument> checkpoint)
         {
             ChangeStreamOptions options = new ChangeStreamOptions()
-            {   
+            {
                 ResumeAfter = lease.Continuation(),
                 FullDocument = ChangeStreamFullDocumentOption.UpdateLookup,
                 MaxAwaitTime = TimeSpan.FromSeconds(5)
@@ -48,8 +49,8 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Mongo
             IChangeStreamCursor<BsonDocument> cursor = await this.monitoredCollection.WatchAsync(WatchPipeline(), options, cancellationToken);
 
             // Attempt to drain change stream, with a limit to the number of attempts between dropping back to the poll interval
-            for (int i = 0; i<100; i++)
-            { 
+            for (int i = 0; i < 100; i++)
+            {
                 if (cancellationToken.IsCancellationRequested)
                 {
                     break;
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.ChangeProcessor.Mongo
                 }
                 await process(cursor.Current);
                 checkpoint(cursor.GetResumeToken());
-            } 
+            }
 
             return cursor.GetResumeToken();
         }

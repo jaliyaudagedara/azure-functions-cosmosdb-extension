@@ -24,21 +24,22 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo
             MongoPartitioner partitioner = new MongoPartitioner(monitoredCollection.client.GetDatabase(monitoredCollection.databaseName), monitoredCollection.collectionName);
             MongoLeaseContainer leaseContainer = new MongoLeaseContainer(leaseCollection.client.GetDatabase(leaseCollection.databaseName).GetCollection<BsonDocument>(leaseCollection.collectionName), id);
 
-            MongoProcessor processor = new MongoProcessor(monitoredCollection.client.GetDatabase(monitoredCollection.databaseName).GetCollection<BsonDocument>(monitoredCollection.collectionName), 
-                async docs => {
-
+            MongoProcessor processor = new MongoProcessor(monitoredCollection.client.GetDatabase(monitoredCollection.databaseName).GetCollection<BsonDocument>(monitoredCollection.collectionName),
+                async docs =>
+                {
                     TriggeredFunctionData data;
                     if (parameter.ParameterType == typeof(byte[]))
                     {
-                        data = new TriggeredFunctionData() { TriggerValue = 
-                            new BsonDocument("results", BsonArray.Create(docs)).ToBson() 
+                        data = new TriggeredFunctionData()
+                        {
+                            TriggerValue = new BsonDocument("results", BsonArray.Create(docs)).ToBson()
                         };
                     }
                     else
                     {
                         data = new TriggeredFunctionData() { TriggerValue = docs };
                     }
-                        
+
                     await executor.TryExecuteAsync(data, CancellationToken.None);
                 });
 
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.WebJobs.Extensions.CosmosDb.Mongo
                 id, partitioner, leaseContainer, processor, new ProcessorOptions());
         }
 
-        public void Cancel()    
+        public void Cancel()
         {
             this.StopAsync(CancellationToken.None).Wait();
         }
