@@ -8,7 +8,6 @@ using Microsoft.Azure.Functions.Worker.Extensions.Abstractions;
 
 namespace Microsoft.Azure.Functions.Worker
 {
-    [InputConverter(typeof(CosmosDBMongoConverter))]
     [ConverterFallbackBehavior(ConverterFallbackBehavior.Default)]
     public sealed class CosmosDBMongoInputAttribute : InputBindingAttribute
     {
