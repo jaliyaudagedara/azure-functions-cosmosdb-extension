@@ -13,12 +13,7 @@ namespace Microsoft.Azure.Functions.Worker
     {
         public override void Configure(IFunctionsWorkerApplicationBuilder applicationBuilder)
         {
-            if (applicationBuilder == null)
-            {
-                throw new ArgumentNullException(nameof(applicationBuilder));
-            }
 
-            applicationBuilder.ConfigureCosmosDBMongoExtension();
         }
     }
 }
